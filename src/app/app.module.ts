@@ -30,6 +30,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogGroupsComponent } from './dialog-groups/dialog-groups.component';
 import {MatAutocompleteSelectedEvent, MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -67,6 +69,7 @@ import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
     MatExpansionModule,
     MatChipsModule,
     DragDropModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

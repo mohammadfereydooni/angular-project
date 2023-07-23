@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialog-groups',
@@ -44,6 +45,7 @@ export class DialogGroupsComponent implements OnInit {
 
   id: any = this.data;
 
+  scaleKeyword: any = this.data.datakey.groups[0].keywords;
 
   @ViewChild('keywordInput')
   keywordInput!: ElementRef<HTMLInputElement>;
@@ -56,7 +58,8 @@ export class DialogGroupsComponent implements OnInit {
     private announcer: LiveAnnouncer,
     private route: ActivatedRoute,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _snackBar:MatSnackBar
   ) {
     // this.myControl.valueChanges.pipe(debounceTime(500)).subscribe((res)=>{
     //   this.api.getSuggestion(res,this.hls,this.geos).subscribe((res)=>{
@@ -74,7 +77,6 @@ export class DialogGroupsComponent implements OnInit {
       name: ['', Validators.required],
       keywords: ['', Validators.required],
     });
-
   }
 
   reigesterGroup() {
@@ -87,7 +89,11 @@ export class DialogGroupsComponent implements OnInit {
     if (this.group.valid) {
       this.group.value.keywords = scaleKeyword;
       console.log(this.group.value);
-      this.api.postGroup(this.group.value, this.id.datakey.id).subscribe({
+      console.log(this.group.value);
+      this.scaleKeyword.push(...this.group.value.keywords);
+
+      console.log(this.scaleKeyword);
+      this.api.postGroup(this.scaleKeyword, this.id.datakey.id).subscribe({
         next: (res) => {
           alert('گروه ثبت شد');
         },

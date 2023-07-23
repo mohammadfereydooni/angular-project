@@ -27,6 +27,7 @@ export class ExplainComponent implements OnInit {
   data!: UserData[];
   vegetables!: any ;
   dataProject: any;
+  
 
   dataSource!: MatTableDataSource<Vegetable[]>;
   panelOpenState = false;
