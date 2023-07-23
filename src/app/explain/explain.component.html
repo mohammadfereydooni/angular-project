@@ -1,0 +1,129 @@
+<div class="margin">
+
+  <button mat-button (click)="openDialog()">اضافه کردن گروه
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="group_add"></mat-icon>
+
+  </button>
+
+  <button mat-fab color="warn" aria-label="Example icon button with a home icon"  (click)="backHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+
+
+</div>
+
+
+
+
+
+<div>
+
+  <mat-card class="example-card" >
+    <mat-card-header>
+      <mat-card-title>{{dataProject?.id}}</mat-card-title>
+      <mat-card-subtitle>{{dataProject?.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{dataProject?.description}}</p>
+      <p></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+
+    <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <!-- <ng-container matColumnDef="mid">
+    <th mat-header-cell *matHeaderCellDef> mid </th>
+    <td mat-cell *matCellDef="let element"> {{element.mid}} </td>
+  </ng-container> -->
+
+  <!-- Name Column -->
+  <!-- <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> title </th>
+    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container> -->
+
+  <!-- Weight Column -->
+  <!-- <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container> -->
+
+
+
+  <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+  <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+<!-- </table> -->
+<mat-accordion>
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false" >
+<mat-expansion-panel-header >
+<mat-panel-title style="font-size: 18px;">
+گروه ها
+</mat-panel-title>
+</mat-expansion-panel-header>
+
+<mat-chip-set
+  class="example-chip"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)">
+  <mat-chip
+    class="example-box"
+    cdkDrag
+    *ngFor="let item of vegetables"
+    (removed)="remove(item)">
+    {{item.title}}
+    <button matChipRemove [attr.aria-label]="'remove ' + vegetables">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </mat-chip>
+</mat-chip-set>
+<!-- <mat-chip-listbox aria-label="Fish selection" (cdkDropListDropped)="drop($event)">
+  <mat-chip-option *ngFor="let item of vegetables">{{item.title}}</mat-chip-option>
+
+</mat-chip-listbox> -->
+
+</mat-expansion-panel>
+
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+گروه های ساخته شده
+</mat-panel-title>
+<mat-panel-description>
+</mat-panel-description>
+</mat-expansion-panel-header>
+<mat-chip-set
+  class="example-chip"
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)">
+  <mat-chip
+    class="example-box"
+    cdkDrag
+    *ngFor="let item of vegetables"
+    (removed)="remove(item)">
+    {{item.title}}
+    <button matChipRemove [attr.aria-label]="'remove ' + vegetables">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </mat-chip>
+</mat-chip-set>
+</mat-expansion-panel>
+
+</mat-accordion>
+
+
+
+

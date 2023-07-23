@@ -1,0 +1,46 @@
+.background{
+
+  width: 700px;
+
+
+}
+mat-dialog-content{
+  overflow-x: hidden;
+}
+
+
+
+.content{
+
+  // width: 600px;
+}
+
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  padding: 10px;
+}
+mat-form-field{
+  width: 300px;
+}
+// .section{
+//   display: flex;
+//   flex-direction: column;
+// }
+.description{
+  height: 150px;
+}
+
+// mat-form-field{
+//   width: 200px;
+// }
+
+.header{
+  width: 100%;
+  background-color: rgb(41, 40, 62);
+}
+// h2{
+//   color: rgb(232, 231, 229);
+// }

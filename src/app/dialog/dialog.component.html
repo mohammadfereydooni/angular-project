@@ -1,0 +1,123 @@
+<div class="background">
+<div class="header">
+  <h2 mat-dialog-title style="color: white;">ثبت پروژه</h2>
+</div>
+
+
+
+<div class="content">
+<mat-dialog-content class="mat-typography" >
+
+    <form action="" class="flex-container" [formGroup]="projectList" (submit)="reigester()">
+
+           <!-- input name  -->
+      <mat-form-field appearance="outline"  >
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="نام" formControlName="name">
+      </mat-form-field>
+
+
+          <!-- input scale  -->
+
+          <mat-form-field appearance="outline" >
+            <mat-label>scale</mat-label>
+            <input type="number" matInput placeholder="scale" formControlName="scale">
+          </mat-form-field>
+
+      <!-- input nameProject -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>scaleKeyword</mat-label>
+        <input type="text" placeholder="  نام پروژه   "
+          matInput [matAutocomplete]="auto1" formControlName="scaleKeyword" [formControl]="myControl"  >
+          
+        <mat-autocomplete #auto1="matAutocomplete">
+          <mat-option *ngFor="let suggest of filterRegions "
+           [value]="suggest.title">
+            {{suggest.title}}
+            <br>
+            <small> {{suggest.type}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+        <!-- input Description -->
+        <mat-form-field class="example-full-width description" appearance="outline">
+          <mat-label>description</mat-label>
+
+          <textarea matInput placeholder=" توضیحات" formControlName="description"  ></textarea>
+        </mat-form-field>
+
+
+
+              <!-- input Category -->
+              <mat-form-field appearance="outline">
+                <mat-label> دسته بندی</mat-label>
+                <mat-select formControlName="category" >
+                  <mat-option>انتخاب کنید</mat-option>
+                  <mat-option value="0">وب</mat-option>
+                  <mat-option value="1">عکس</mat-option>
+                  <mat-option value="2">اخبار</mat-option>
+                  <mat-option value="3">froogle</mat-option>
+                  <mat-option value="4">youtube</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+
+
+
+
+
+
+
+      <!-- <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label> category</mat-label>
+      <input type="text"
+            placeholder="دسته بندی"
+            aria-label="Number"
+            matInput
+            [matAutocomplete]="auto"
+            formControlName="category">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+      </mat-form-field> -->
+
+
+            <div class="section">
+            <!-- section hl  -->
+            <section class="example-section">
+              <label class="example-margin">ملیت:</label>
+              <mat-radio-group [(ngModel)]="geos" formControlName="geo">
+                <mat-radio-button class="example-margin" value="IR">ایرانی</mat-radio-button>
+                <mat-radio-button class="example-margin" value="US">امریکایی</mat-radio-button>
+              </mat-radio-group>
+            </section>
+
+
+
+            <section class="example-section">
+              <label class="example-margin">زبان</label>
+              <mat-radio-group [(ngModel)]="hls" formControlName="language">
+                <mat-radio-button class="example-margin" value="fa">فارسی</mat-radio-button>
+                <mat-radio-button class="example-margin" value="en">انگلیسی</mat-radio-button>
+              </mat-radio-group>
+            </section>
+             <!-- section hl  -->
+
+            </div>
+    </form>
+
+</mat-dialog-content>
+
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="warn">خروج</button>
+  <!-- <button mat-button mat-dialog-close  color="warn">Cancel</button> -->
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial (click)="reigester()" color="primary">{{upbtn}}</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="reigester()"  color="primary">ثبت</button> -->
+</mat-dialog-actions>
+</div>

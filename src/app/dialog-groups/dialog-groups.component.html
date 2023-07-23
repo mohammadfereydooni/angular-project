@@ -1,0 +1,113 @@
+<div class="header">
+  <h2 mat-dialog-title style="color: white;">اضافه کردن گروه</h2>
+
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <form action="" class="flex-container" [formGroup]="group" (submit)="reigesterGroup()" >
+
+
+    <!-- input id  -->
+
+    <!-- <mat-form-field appearance="outline"  >
+      <mat-label>ایدی </mat-label>
+      <input matInput placeholder="ایدی " formControlName="id">
+    </mat-form-field> -->
+
+    <!-- input name  -->
+  <mat-form-field appearance="outline"  >
+  <mat-label>عنوان</mat-label>
+  <input matInput placeholder="عنوان" formControlName="name">
+  </mat-form-field>
+
+
+
+
+
+    <!-- <mat-form-field appearance="outline">
+        <mat-label>گروه ها</mat-label>
+        <input type="text" placeholder="  انتخاب گروه   "
+          matInput [matAutocomplete]="auto1" formControlName="scaleKeyword" [formControl]="myControl"  >
+        <mat-autocomplete #auto1="matAutocomplete">
+          <mat-option *ngFor="let suggest of filterRegions "
+           [value]="suggest.title">
+            {{suggest.title}}
+            <br>
+            <small> {{suggest.type}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> -->
+
+
+      <!-- <mat-form-field class="example-chip-list">
+        <mat-label>دسته بندی گروه ها</mat-label>
+
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)" >
+          <mat-option *ngFor="let suggest of filterRegions " [value]="suggest.title" >
+            {{suggest.title}}
+          </mat-option>
+        </mat-autocomplete>
+
+        <mat-chip-grid #chipGrid aria-label="Fruit selection">
+          <mat-chip-row *ngFor="let item of filterRegions" >
+            {{item.title}}
+          </mat-chip-row>
+        </mat-chip-grid>
+        <input placeholder="New Fruit..." #keywordInput [formControl]="myControl" formControlName="keywords"
+
+          [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)"
+        />
+
+      </mat-form-field> -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>scaleKeyword</mat-label>
+
+        <input type="text" placeholder="  نام پروژه   "
+          matInput [matAutocomplete]="auto1" formControlName="keywords"  (keyup)="searchInSuggest()">
+
+        <mat-autocomplete #auto1="matAutocomplete">
+          <mat-option *ngFor="let suggest of filterRegions "
+           [value]="suggest.title">
+            {{suggest.title}}
+            <br>
+            <small> {{suggest.type}}</small>
+          </mat-option>
+        </mat-autocomplete>
+
+
+      </mat-form-field>
+
+      <mat-chip-set
+        class="example-chip"
+        cdkDropList
+        cdkDropListOrientation="horizontal">
+        <mat-chip
+          class="example-box"
+          cdkDrag
+          *ngFor="let vegetable of filterRegions">
+          {{vegetable.title}}
+        </mat-chip>
+      </mat-chip-set>
+
+
+
+
+
+
+
+
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close  mat-raised-button color="warn">خروج</button>
+  <button mat-button [mat-dialog-close]="true" mat-raised-button cdkFocusInitial color="primary" (click)="reigesterGroup()">ثبت</button>
+</mat-dialog-actions>
+
+
+
+
+

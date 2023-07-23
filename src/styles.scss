@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: ISans;
+  src: url(assets/IRANSansWeb.woff);
+}
+@font-face {
+  font-family: Montser;
+  src: url(assets/Montserrat-VariableFont_wght.ttf);
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1,h2,h3,h4,h5,span,a,p,td,mat-label,mat-card-subtitle,input,textarea,label,mat-radio-button,th,button {
+  font-family: "ISans" , "Montser" !important;
+}
+
+
+// mat-table{
+//   tr{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-start;
+//     width: 100%;
+//   }
+// }

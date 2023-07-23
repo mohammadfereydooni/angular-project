@@ -1,0 +1,145 @@
+<app-header></app-header>
+<div class="container" id="box">
+
+  <mat-form-field class="filter" >
+    <mat-label>جستجو</mat-label>
+    <input  matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ایدی </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> نام </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+      </ng-container>
+
+      <!-- description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> توضیحات </th>
+        <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+      </ng-container>
+
+      <!-- category Column -->
+      <ng-container matColumnDef="category" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> دسته بندی </th>
+        <td mat-cell *matCellDef="let row" >
+          <ng-container *ngIf="row.category===0" >
+            وب
+          </ng-container>
+          <ng-container *ngIf="row.category===1" >
+            عکس
+          </ng-container>
+          <ng-container *ngIf="row.category===2" >
+            اخبار
+          </ng-container>
+          <ng-container *ngIf="row.category===3" >
+            froogle
+          </ng-container>
+          <ng-container *ngIf="row.category===4" >
+            youtube
+          </ng-container>
+        </td>
+
+      </ng-container>
+      <!-- scale Column -->
+      <ng-container matColumnDef="scale">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Scale </th>
+        <td mat-cell *matCellDef="let row"> {{row.scale}} </td>
+      </ng-container>
+      <!-- hl Column -->
+      <ng-container matColumnDef="hl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> زبان </th>
+        <!-- <td mat-cell *matCellDef="let row" > {{row.hl}} </td> -->
+
+
+        <td mat-cell *matCellDef="let row" >
+          <ng-container *ngIf="row.hl==='en'" >
+            انگلیسی
+          </ng-container>
+          <ng-container *ngIf="row.hl==='fa'" >
+            فارسی
+          </ng-container>
+        </td>
+      </ng-container>
+      <!-- geo Column -->
+      <ng-container matColumnDef="geo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > ملیت </th>
+        <td mat-cell *matCellDef="let row" >
+          <ng-container *ngIf="row.geo==='US'" >
+            امریکایی
+          </ng-container>
+          <ng-container *ngIf="row.geo==='IR'" >
+            ایرانی
+          </ng-container>
+        </td>
+      </ng-container>
+      <!-- scaleKeyword Column -->
+      <ng-container matColumnDef="scaleKeyword">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mid </th>
+        <td mat-cell *matCellDef="let row">
+          {{row.scaleKeyword.mid}}
+
+        </td>
+      </ng-container>
+
+       <!-- manegment Column -->
+
+        <ng-container matColumnDef="manegment"   >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="mat-column-manegment">  مدیریت </th>
+          <td mat-cell *matCellDef="let row"  class="last-column">
+            <button (click)="navigateToExplain(row.id)" mat-icon-button color="warn" aria-label="Example icon button with a delete icon">
+              <mat-icon>public</mat-icon>
+            </button>
+            <button (click)="editProject(row)" mat-icon-button color="primary" aria-label="Example icon button with a edit icon">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button (click)="deleteProject(row.id)" mat-icon-button color="warn" aria-label="Example icon button with a delete icon">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+          <!-- manegment Column -->
+
+
+
+
+
+
+
+      <!-- <ng-container matColumnDef=" buoton">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> توضیخات بیشتر </th>
+        <td mat-cell *matCellDef="let row">
+          <button (click)="navigateToExplain(row.id)" mat-fab extended color="primary">
+            <mat-icon>public</mat-icon>
+              نمایش
+          </button>
+
+        </td>
+      </ng-container> -->
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[ 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+
+
+</div>

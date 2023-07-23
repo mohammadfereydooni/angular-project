@@ -1,0 +1,33 @@
+.example-card {
+  max-width: 400px;
+  margin: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+table {
+  width: 100%;
+
+}
+// .pro{
+//   height: 300px;
+// }
+.margin{
+  margin: 30px;
+  display: flex;
+  justify-content: space-between;
+
+
+}
+
+.margin button{
+  color: rgb(255, 255, 255);
+  background-color: rgb(90, 22, 22);
+}
+.back{
+
+  margin:20px;
+}
+mat-expansion-panel{
+  margin-right:10px;
+  background-color: rgb(145, 147, 149);
+  width: 700px;
+}
