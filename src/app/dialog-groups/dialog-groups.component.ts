@@ -27,6 +27,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dialog-groups',
@@ -59,7 +60,8 @@ export class DialogGroupsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _snackBar:MatSnackBar
+    private _snackBar:MatSnackBar,
+    private toastr: ToastrService
   ) {
     // this.myControl.valueChanges.pipe(debounceTime(500)).subscribe((res)=>{
     //   this.api.getSuggestion(res,this.hls,this.geos).subscribe((res)=>{
@@ -95,11 +97,11 @@ export class DialogGroupsComponent implements OnInit {
       console.log(this.scaleKeyword);
       this.api.postGroup(this.scaleKeyword, this.id.datakey.id).subscribe({
         next: (res) => {
-          alert('گروه ثبت شد');
+          this.toastr.success('موفق', 'کاربر با موفقیت ثبت شد');
         },
       });
     } else {
-      alert('erroorrr');
+      this.toastr.error('خطا', 'کاربر ثبت نشد');
       console.log(this.group.value);
     }
   }

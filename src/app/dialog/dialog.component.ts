@@ -23,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApiService } from '../services/api.service';
 import { query } from '@angular/animations';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dialog',
@@ -52,7 +53,7 @@ export class DialogComponent implements OnInit {
 
   projectList!: FormGroup;
 
-  constructor(private formbuilder: FormBuilder, private api: ApiService, @Inject(MAT_DIALOG_DATA) public editdata: any) {
+  constructor(private formbuilder: FormBuilder, private api: ApiService, @Inject(MAT_DIALOG_DATA) public editdata: any, private toastr:ToastrService) {
     this.api.getSuggestion('سلام', this.hls, this.geos).subscribe((res) => {
       this.filterRegions = res;
     });
@@ -113,19 +114,30 @@ export class DialogComponent implements OnInit {
       console.log(this.projectList.value);
       this.api.postProject(this.projectList.value).subscribe({
         next: (res) => {
-          alert('کاربر با موفقیت ثبت شد');
-          // location.reload();
+          this.toastr.success('موفق', 'کاربر با موفقیت ثبت شد',{
+            timeOut:3000,
+            positionClass: 'toast-top'
+          });
+
+
+
           console.log(this.projectList.value);
         },
         error: () => {
-          alert('ثبت انجام نشد');
+          this.toastr.error('خطا', 'کاربر ثبت نشد', {
+            timeOut:3000,
+            positionClass: "toast-bottom-full-width"
+          });
         },
       });
     }
 
     else {
 
-      alert('لطفا فرم را با دقت پر کنید');
+      this.toastr.error('خطا', '  لطفا فرم را با دقت پر کنید',{
+        timeOut:3000,
+        positionClass: "toast-bottom-full-width"
+      });
       console.log(this.projectList.value);
     }
   }

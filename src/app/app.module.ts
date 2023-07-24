@@ -31,6 +31,7 @@ import { DialogGroupsComponent } from './dialog-groups/dialog-groups.component';
 import {MatAutocompleteSelectedEvent, MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -69,7 +70,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatExpansionModule,
     MatChipsModule,
     DragDropModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
