@@ -114,30 +114,21 @@ export class DialogComponent implements OnInit {
       console.log(this.projectList.value);
       this.api.postProject(this.projectList.value).subscribe({
         next: (res) => {
-          this.toastr.success('موفق', 'کاربر با موفقیت ثبت شد',{
-            timeOut:3000,
-            positionClass: 'toast-top'
-          });
+          this.toastr.success('موفق', 'کاربر با موفقیت ثبت شد');
 
 
 
           console.log(this.projectList.value);
         },
         error: () => {
-          this.toastr.error('خطا', 'کاربر ثبت نشد', {
-            timeOut:3000,
-            positionClass: "toast-bottom-full-width"
-          });
+          this.toastr.error('خطا', 'کاربر ثبت نشد');
         },
       });
     }
 
     else {
 
-      this.toastr.error('خطا', '  لطفا فرم را با دقت پر کنید',{
-        timeOut:3000,
-        positionClass: "toast-bottom-full-width"
-      });
+      this.toastr.error('خطا', '  لطفا فرم را با دقت پر کنید');
       console.log(this.projectList.value);
     }
   }

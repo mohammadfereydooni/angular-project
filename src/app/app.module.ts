@@ -71,7 +71,10 @@ import { ToastrModule } from 'ngx-toastr';
     MatChipsModule,
     DragDropModule,
     MatSnackBarModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-left',
+
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

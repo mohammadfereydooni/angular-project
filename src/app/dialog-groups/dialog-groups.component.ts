@@ -46,7 +46,9 @@ export class DialogGroupsComponent implements OnInit {
 
   id: any = this.data;
 
-  scaleKeyword: any = this.data.datakey.groups[0].keywords;
+  words: any = this.data.datakey.groups[0].keywords;
+
+  chips!: string ;
 
   @ViewChild('keywordInput')
   keywordInput!: ElementRef<HTMLInputElement>;
@@ -71,14 +73,17 @@ export class DialogGroupsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.getSuggestion(' ', this.hls, this.geos).subscribe((res) => {
+    this.api.getSuggestion('', this.hls, this.geos).subscribe((res) => {
       this.filterRegions = res;
     });
     this.group = this.formbuilder.group({
-      // id: ['', Validators.required],
+      id: [Math.random(), Validators.required],
       name: ['', Validators.required],
       keywords: ['', Validators.required],
     });
+
+
+
   }
 
   reigesterGroup() {
@@ -90,14 +95,15 @@ export class DialogGroupsComponent implements OnInit {
     });
     if (this.group.valid) {
       this.group.value.keywords = scaleKeyword;
-      console.log(this.group.value);
-      console.log(this.group.value);
-      this.scaleKeyword.push(...this.group.value.keywords);
 
-      console.log(this.scaleKeyword);
-      this.api.postGroup(this.scaleKeyword, this.id.datakey.id).subscribe({
+      this.words.push(...this.group.value.keywords);
+          // this.group.value.keywords.push(this.words)
+          this.group.value.keywords = this.words;
+      this.api.postGroup(this.group.value, this.id.datakey.id).subscribe({
         next: (res) => {
           this.toastr.success('موفق', 'کاربر با موفقیت ثبت شد');
+          console.log(this.group.value);
+
         },
       });
     } else {
@@ -117,9 +123,13 @@ export class DialogGroupsComponent implements OnInit {
   // }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.keyword.push(event.option.viewValue);
+
+
+
+
+    // this.chips.push(event.option.viewValue);
     // this.keywordInput.nativeElement.value = '';
-    this.group.controls['keywords'].setValue(this.keyword);
+    // this.group.controls['keywords'].setValue(this.keyword);
   }
 
   add(event: MatChipInputEvent): void {
@@ -141,6 +151,14 @@ export class DialogGroupsComponent implements OnInit {
       .getSuggestion(this.group.value.keywords, this.hls, this.geos)
       .subscribe((res) => {
         this.filterRegions = res;
+
+
+
       });
   }
+  select(event:string){
+        this.chips = event
+
+  }
+
 }

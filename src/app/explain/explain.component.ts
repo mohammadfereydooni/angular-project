@@ -27,10 +27,10 @@ export class ExplainComponent implements OnInit {
   data!: UserData[];
   vegetables!: any ;
   dataProject: any;
-  
+  mychip:boolean=false;
 
   dataSource!: MatTableDataSource<Vegetable[]>;
-  panelOpenState = false;
+  panelOpenState = true;
 
 
   constructor(

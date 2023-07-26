@@ -66,9 +66,9 @@
         <mat-label>scaleKeyword</mat-label>
 
         <input type="text" placeholder="  نام پروژه   "
-          matInput [matAutocomplete]="auto1" formControlName="keywords"  (keyup)="searchInSuggest()">
+          matInput [matAutocomplete]="auto1" formControlName="keywords"  (keyup)="searchInSuggest()" (ngModelChange)="select($event)">
 
-        <mat-autocomplete #auto1="matAutocomplete">
+        <mat-autocomplete #auto1="matAutocomplete"  >
           <mat-option *ngFor="let suggest of filterRegions "
            [value]="suggest.title">
             {{suggest.title}}
@@ -87,8 +87,8 @@
         <mat-chip
           class="example-box"
           cdkDrag
-          *ngFor="let vegetable of filterRegions">
-          {{vegetable.title}}
+          >
+          {{chips}}
         </mat-chip>
       </mat-chip-set>
 

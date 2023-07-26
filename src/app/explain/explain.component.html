@@ -105,6 +105,7 @@
 </mat-panel-description>
 </mat-expansion-panel-header>
 <mat-chip-set
+
   class="example-chip"
   cdkDropList
   cdkDropListOrientation="horizontal"
@@ -115,9 +116,11 @@
     *ngFor="let item of vegetables"
     (removed)="remove(item)">
     {{item.title}}
-    <button matChipRemove [attr.aria-label]="'remove ' + vegetables">
+
+    <button matChipRemove [attr.aria-label]="'remove ' + vegetables" class="remove" >
       <mat-icon>cancel</mat-icon>
     </button>
+
   </mat-chip>
 </mat-chip-set>
 </mat-expansion-panel>

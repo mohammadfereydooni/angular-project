@@ -15,10 +15,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-h1,h2,h3,h4,h5,span,a,p,td,mat-label,mat-card-subtitle,input,textarea,label,mat-radio-button,th,button {
+h1,h2,h3,h4,h5,span,a,p,td,mat-label,mat-card-subtitle,input,textarea,label,mat-radio-button,th,button,#toast-container {
   font-family: "ISans" , "Montser" !important;
 }
-
+// #toast-container{
+//   font-family: "ISans" , "Montser" !important;
+// }
 
 // mat-table{
 //   tr{
@@ -28,3 +30,25 @@ h1,h2,h3,h4,h5,span,a,p,td,mat-label,mat-card-subtitle,input,textarea,label,mat-
 //     width: 100%;
 //   }
 // }
+
+
+
+.mdc-evolution-chip__cell--trailing{
+  display: none !important;
+}
+
+.mdc-evolution-chip__action--presentational{
+  padding-left: 1rem !important;
+}
+
+.mat-mdc-chip{
+  &:hover{
+    .mdc-evolution-chip__action--presentational{
+      padding-left: 0 !important;
+    }
+
+    .mdc-evolution-chip__cell--trailing{
+      display: inline-flex !important;
+    }
+  }
+}
